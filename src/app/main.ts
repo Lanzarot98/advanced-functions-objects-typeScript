@@ -9,10 +9,10 @@ for (let index = 0; index < 50; index++) {
     description: faker.commerce.productDescription(),
     image: faker.image.imageUrl(),
     color: faker.color.human(),
-    size: faker.helpers.arrayElement(['S', 'M', 'XL', 'L']),
+    size: faker.helpers.arrayElement(['M', 'S', 'XL', 'L']),
     price: parseInt(faker.commerce.price(), 10),
     isNew: faker.datatype.boolean(),
-    tags: faker.helpers.arrayElement(),
+    tags: faker.helpers.arrayElements(),
     title: faker.commerce.productName(),
     stock: faker.datatype.number({min:10, max:100}),
     categoryId: faker.datatype.uuid()
