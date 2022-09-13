@@ -1,7 +1,7 @@
 // ejecutamos y hacemos el uso del service
 import {faker} from '@faker-js/faker';
 
-import { addProduct, products, updateProduct } from './products/product.service';
+import { addProduct, products, updateProduct, findProducts } from './products/product.service';
 
 for (let index = 0; index < 50; index++) {
 
@@ -26,3 +26,11 @@ updateProduct(product.id, {
   stock: 80,
 
 });
+
+findProducts({
+  stock: 10,
+  color: 'red',
+  createdAt: new Date(),
+  isNew: true,
+  tags: ['as','ase'],
+})
