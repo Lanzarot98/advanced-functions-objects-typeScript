@@ -8,8 +8,9 @@ let boolVar: boolean = anyVar;
 (async () => {
 
   async function getProducts() {
-    const { data } = await axios.get<Product[]>('https://api.escuelajs.co/api/v1/products');
+    const rta = await axios.get<Product[]>('https://api.escuelajs.co/api/v1/products');
     //code
+    const data = rta.data as Product[]
     return data;
   }
 
