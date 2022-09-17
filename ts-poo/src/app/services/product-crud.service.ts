@@ -1,3 +1,4 @@
+import { validate } from "class-validator";
 import { UpdateProductDto } from "../dtos/product.dto";
 import { Product } from "../models/product.model";
 import { BaseHttpService } from "./base-http.service";
@@ -11,6 +12,7 @@ export class ProductCRUDService {
   async update(id:Product['id'], dto: UpdateProductDto) {
     // permisos
     // lógica
+    // validate(dto) una forma de validar la integridad de datos.
     // this.http.otroRequest // puedo usar los otros métodos de la versión 2 http
     return this.http.update(id,dto);
   }

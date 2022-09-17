@@ -1,4 +1,4 @@
-import { IsUrl } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsOptional, IsUrl, Length, validateOrReject } from 'class-validator';
 import { AccessType, Category } from "../models/category.model";
 
 
@@ -6,10 +6,26 @@ import { AccessType, Category } from "../models/category.model";
 export interface ICreateCategoryDto extends Omit<Category, 'id'>{ }
 
 export class CreateCategoryDto implements ICreateCategoryDto {
+  @IsNotEmpty()
+  @Length(4, 140)
   name!:  string;
 
-  @IsUrl
+  @IsUrl()
+  @IsNotEmpty()
   image!: string;
 
+  @IsOptional()
+  @IsEnum(AccessType)
   access?: AccessType | undefined;
 }
+
+(async () => {
+  try {
+    const dto = new CreateCategoryDto();
+    dto.name = 'Luis Miguel Rojas';
+    dto.image = 'https://api.escuelajs.co/api/v1/products';
+    await validateOrReject(dto);
+  } catch (error) {
+    console.log(error);
+  }
+})();
